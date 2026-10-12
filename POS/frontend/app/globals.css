@@ -1,0 +1,141 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   MJ Electricals POS — Design Tokens (UI Kit)
+   Deep Navy primary · Deep Red secondary · Satoshi type
+   ============================================================ */
+:root {
+  /* Brand */
+  --primary: #061161;        /* Deep Navy — primary brand colour */
+  --primary-hover: #0A1C8C;
+  --primary-light: #EDEFF9;
+  --accent: #780206;         /* Deep Red — secondary brand colour */
+  --accent-gradient: linear-gradient(90deg, #780206, #061161);
+
+  /* Neutrals — white-dominant workspace */
+  --background: #FFFFFF;     /* application background */
+  --surface: #FAFAFC;        /* subtle surfaces: table headers, hovers */
+  --card: #FFFFFF;           /* cards / sections */
+  --border: #DADDE6;         /* dividers / lines */
+  --text-primary: #0B0E1A;   /* headings / main text */
+  --text-secondary: #4A5060; /* body text */
+  --text-muted: #6B7183;     /* placeholders / hints */
+
+  /* Sidebar (navy) */
+  --sidebar: #061161;
+  --sidebar-hover: #141B7D;
+  --sidebar-active: #1B25A5;
+
+  /* Functional — system states only, never decoration */
+  --success: #16803C;
+  --warning: #B7791F;
+  --danger: #C62828;
+  --info: #2563EB;
+}
+
+body {
+  background: var(--background);
+  color: var(--text-primary);
+  font-family: var(--font-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 15px; /* Body */
+  line-height: 1.55;
+  font-feature-settings: "tnum" 1, "cv11" 1;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ------------------------- Typography scale ------------------------- */
+h1 { font-size: 26px; font-weight: 800; letter-spacing: -0.02em; }
+h2 { font-size: 20px; font-weight: 800; letter-spacing: -0.01em; }
+h3 { font-size: 17px; font-weight: 700; }
+h4 { font-size: 15px; font-weight: 700; }
+
+/* --------------------------- Pill buttons --------------------------- */
+/* The kit specifies fully-rounded (pill) buttons for every action. */
+button,
+[role="button"],
+input[type="submit"],
+input[type="button"] {
+  border-radius: 10px !important;
+}
+
+/* Secondary button: crisp navy outline. */
+.btn-outline {
+  border: 1.5px solid var(--primary) !important;
+  background: #fff !important;
+  color: var(--primary);
+}
+.btn-outline:hover { background: var(--primary-light) !important; }
+
+/* --------------------- Fully-rounded form fields -------------------- */
+input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="file"]),
+select,
+textarea {
+  border-radius: 10px !important;
+  border-width: 1.5px;
+}
+
+/* Navy focus ring on every field — the kit's "focused" state. */
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--primary) !important;
+  box-shadow: 0 0 0 3px rgba(6, 17, 97, 0.12) !important;
+  outline: none;
+}
+
+/* Checkboxes, radios and toggles pick up the navy accent. */
+input[type="checkbox"],
+input[type="radio"] {
+  accent-color: var(--primary);
+}
+
+::placeholder {
+  color: var(--text-muted);
+}
+
+/* Tables: clear header rule, readable rows */
+table { border-collapse: collapse; }
+thead th { letter-spacing: 0.02em; }
+tbody tr { transition: background-color .12s; }
+tbody tr:hover td { background-color: #F7F8FC; }
+input[type="number"] { font-variant-numeric: tabular-nums; }
+
+/* Scrollbar styling for a cleaner look */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #DADDE6;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #6B7183;
+}
+
+/* Print: only show the receipt, hide everything else */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  .receipt-print,
+  .receipt-print * {
+    visibility: visible;
+  }
+  .receipt-print {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    max-width: 80mm;
+    padding: 8px;
+  }
+  .no-print {
+    display: none !important;
+  }
+}

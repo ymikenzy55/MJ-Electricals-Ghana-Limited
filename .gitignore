@@ -1,0 +1,47 @@
+# ---------------------------------------------------------------- secrets
+.env
+.env.*
+!.env.example
+*.pem
+POS/installer/secrets/*
+!POS/installer/secrets/.gitignore
+
+# ------------------------------------------------------------ dependencies
+node_modules/
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+
+# ------------------------------------------------------------ build output
+.next/
+out/
+build/
+dist/
+*.tsbuildinfo
+next-env.d.ts
+POS/installer/build/
+POS/installer/dist/
+POS/installer/vendor/
+POS/MJ POS.exe
+POS/MJPOS.ico
+
+# ----------------------------------------------------- local data and logs
+# Offline POS database and backups hold real sales and customer records.
+*.db
+*.db-shm
+*.db-wal
+POS/backend/data/
+logs/
+*.log
+*.err
+nul
+
+# One-off catalogue import workspace (scraped images, data dumps)
+import/
+
+# ---------------------------------------------------------------- editors
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

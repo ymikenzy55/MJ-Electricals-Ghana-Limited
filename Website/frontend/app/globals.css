@@ -1,0 +1,58 @@
+@import url("https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Satoshi", ui-sans-serif, system-ui, sans-serif;
+  --color-primary: #061161;
+  --color-primary-hover: #0a1c8c;
+  --color-navy-dark: #040b3f;
+  --color-accent: #780206;
+  --color-surface: #fafafc;
+  --color-border: #e6e7eb;
+  --color-ink: #111318;
+  --color-muted: #5f6368;
+  --color-faint: #8a8f98;
+  --color-success: #16803c;
+  --color-warning: #b7791f;
+  --color-error: #c62828;
+  --color-info: #2563eb;
+}
+
+html {
+  font-family: var(--font-sans);
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+/* Slightly smaller base type on phones so everything scales down together. */
+@media (max-width: 639px) {
+  html { font-size: 15px; }
+  input, select, textarea { font-size: 16px !important; } /* stops iOS zoom-on-focus */
+}
+
+/* Never let a stray wide element create sideways scrolling on phones. */
+body { overflow-x: hidden; }
+img { max-width: 100%; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { animation-duration: .01ms !important; transition-duration: .01ms !important; } }
+
+body {
+  @apply bg-white text-ink antialiased;
+}
+
+::selection {
+  background: #061161;
+  color: #fff;
+}
+
+/* thin scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: #c9ccd6;
+  border-radius: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
